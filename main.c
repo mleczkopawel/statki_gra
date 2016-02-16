@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    menu();
+    menu();//MENU
     printf("\n  Wczytaj: ");scanf("%d",&nr);
     switch (nr) {
         case 1:{rozm_x=3;rozm_y=3;}break;
@@ -21,6 +21,7 @@ int main(void)
     };
     struct player p1;
     struct player p2;
+//    PRZYPISUJĘ TABLICE DO WSKAŹNIKÓW ŻEBY SIĘ LEPIEJ PO TYM PORUSZAĆ
     wsk_tab_p1=&p1.tab[0];
     wsk_tab_p2=&p2.tab[0];
     wsk_ctab_p1=&p1.ctab[0];
@@ -99,6 +100,7 @@ int main(void)
     printf("\n\tWYGRYWA PLAYER %d GRATULACJE!!!\n",play);
     return 0;
 }
+//FUNKCJA WYPEŁNIA TABLICĘ OKREŚLAJĄC POŁOŻENIE STATKU
 void wypelnij_tablice(int xx, int yy, int tab[xx][yy])
 {
     int i,j,xxx,yyy;
@@ -123,6 +125,7 @@ void menu()
     printf("\t2. Medium (5x5)\n");
     printf("\t3. Hard (10x10)\n");
 }
+//FUNKCJA WYPEŁNIA TABLICĘ CHAR ABY PÓŹNIEJ ŁADNIE WYŚWIETLAĆ POŁOŻENIE
 void wypelnij_charowe(int xx, int yy, char ctab[xx][yy])
 {
     int i,j;
@@ -130,6 +133,8 @@ void wypelnij_charowe(int xx, int yy, char ctab[xx][yy])
         for(j=0;j<yy;j++)
             ctab[i][j]=' ';
 }
+//FUNKCJA WYŚWIETLA TABLICĘ INTÓW TAM GDZIE JEST STATEK WYPISUJE 1
+//TAM GDZIE STATKU NIE MA TO WYPISUJE 0
 void wyswietl_wszystko(int xx, int yy, int tab[xx][yy])
 {
     int i,j,k,l,m;//liczniki
@@ -156,6 +161,8 @@ void wyswietl_wszystko(int xx, int yy, int tab[xx][yy])
         printf("\n");
     }
 }
+//FUNKCJA WYPISUJE TABLICĘ CHARÓW TAK ABY SIĘ ZORIENTOWAĆ GDZIE JUŻ SIĘ STRZELAŁO
+//TAM GDZIE SIĘ TRAFIŁO W STATEK WYPISUJE X A TAM GDZIE NIE TO WYPISUJE 0
 void wyswietl_pole(int xx, int yy, char ctab[xx][yy])
 {
     int i,j,k,l,m;//liczniki
@@ -182,6 +189,7 @@ void wyswietl_pole(int xx, int yy, char ctab[xx][yy])
         printf("\n");
     }
 }
+//FUNKCJA LICZY ILE JEST PÓL ZAPEŁNIONYCH STATKAMI
 int licz(int xx, int yy, int tab[xx][yy])
 {
     int i,j,suma;
@@ -192,6 +200,8 @@ int licz(int xx, int yy, int tab[xx][yy])
                 suma++;
     return suma;
 }
+//DO ZAMIANY TABLICY CHAROWEJ POTRZEBNE SĄ DWIE FUNKCJE DLA DWÓCH GRACZY, W PRZECIWNYM WYPADKU
+//GRA BĘDZIE SIĘ KOŃCZYĆ W NIESPODZIEWANYM MOMENCIE
 int zamien_znaki1(int xx, int yy, int xxx, int yyy, int tab[xx][yy], char ctab[xx][yy])
 {
     if(tab[yyy-1][xxx-1]==1)
